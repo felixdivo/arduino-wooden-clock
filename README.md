@@ -1,6 +1,6 @@
 # arduino-wooden-clock
 
-The source code and plans for a wooden clock running on an [Arduino Mega 2560](https://store.arduino.cc/arduino-mega-2560-rev3) board.
+The source code and plans for a wooden clock running on an [Arduino Mega 2560](https://store.arduino.cc/arduino-mega-2560-rev3) board. The time signal comes from Germany's [DCF77 station](https://en.wikipedia.org/wiki/DCF77) using a low cost receiver.
 
 ## State of the project
 **This project is not finished yet and in the next weeks more code & schematics will come. At the end, the code will get restructured in a way that it can be used in other projects as well and more easily understood.** (_Date: Aug. 2017_)
