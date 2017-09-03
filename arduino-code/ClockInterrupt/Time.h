@@ -1,3 +1,6 @@
+/**
+ * A simple struct for storing time and date information.
+ */
 typedef struct {
 
   byte second = 0;
@@ -12,6 +15,10 @@ typedef struct {
 
 } Time;
 
+/**
+ * Returns the English name of a day of the week.  Monday is 1, Sunday is 7, 
+ * everything outside of that returns a placeholder.
+ */
 String getDayOfWeek(byte day_of_week) {
   switch (day_of_week) {
     case 1: return "Monday";
@@ -25,6 +32,9 @@ String getDayOfWeek(byte day_of_week) {
   }
 }
 
+/**
+ * Converts a Time struct into a human readable String.
+ */
 String printTime(Time t) {
   return String(t.hour, DEC) + ":"
          + String(t.minute, DEC) + ":"
@@ -34,4 +44,3 @@ String printTime(Time t) {
          + String(t.month, DEC) + "-"
          + String(t.day, DEC);
 }
-
