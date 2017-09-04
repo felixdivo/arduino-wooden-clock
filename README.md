@@ -8,7 +8,7 @@ The source code and plans for a wooden clock running on an [Arduino Mega 2560](h
 ## Tools
 
 The schematics are build with [Fritzing](http://fritzing.org/). 
-The code can be run with the official [Arduino IDE](https://www.arduino.cc/en/Main/Software). 
+The code can be run with the official [Arduino IDE](https://www.arduino.cc/en/Main/Software) (tested with v1.8.4). 
 
 ## License
 

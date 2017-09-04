@@ -1,3 +1,9 @@
+#ifndef INCLUDE_GUARD_TIME
+#define INCLUDE_GUARD_TIME
+
+// byte definition
+typedef unsigned char byte;
+
 /**
  * A simple struct for storing time and date information.
  */
@@ -44,3 +50,5 @@ String printTime(Time t) {
          + String(t.month, DEC) + "-"
          + String(t.day, DEC);
 }
+
+#endif /* INCLUDE_GUARD_TIME */

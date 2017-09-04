@@ -1,4 +1,6 @@
 
+#include "Time.h" // custom Time struct
+
 // Config:
 const bool LOGGING_DCF77 = true; // if true, logs basic information to serial out
 const bool LOGGING_DCF77_LED = true; // if true, displays the receiver date on LOGGING_DCF77_LED_PIN
@@ -9,6 +11,10 @@ const bool DISCARD_ON_PARITY_PROBLEM = true; // if true, discards a transmission
 
 const unsigned int LOGGING_DCF77_LED_PIN = LED_BUILTIN; // the pin to send the LED signal blinking to
 volatile unsigned int INTERRUPT_PIN; // the interrupt pin of the time signal receiver
+
+// buffer for currently receiving data
+byte buffer[59];
+volatile int next_index = -1; // -1 = paused
 
 /**
  * Sets up the DCF77 receiver and start listening for time signals. 
@@ -99,10 +105,6 @@ unsigned int calculateTimeDelta() {
   return time_delta;
 }
 
-// buffer for currently receiving data
-const byte buffer[59];
-volatile int next_index = -1; // -1 = paused
-
 /**
  * Called at the start of a new minute/transmission.
  */
@@ -142,7 +144,7 @@ void finishMinute() {
   }
 
   // add up the received data
-  const Time now;
+  Time now;
 
   // set the seconds field to zero, because the signal
   // only has a resolution of one minute
@@ -229,7 +231,7 @@ void writeNextBit(byte bit) {
 /**
  * Returns true if the given range (each inclusive) has an even parity. 
  */
-bool isEvenParity(byte input, int index_start, int index_end) {
+bool isEvenParity(byte input[], int index_start, int index_end) {
   int sum = 0;
   for (int i = index_start; i <= index_end; i++)
     if (input[i]) sum++;
